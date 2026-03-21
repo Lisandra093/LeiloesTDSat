@@ -14,20 +14,27 @@ import javax.swing.JOptionPane;
 /**
  *
  * @author Adm
- */
-public class conectaDAO {
+ */ 
+    public class conectaDAO {
     
     public Connection connectDB(){
         Connection conn = null;
+         
+    try {
+       
+        Class.forName("com.mysql.cj.jdbc.Driver"); 
         
-        try {
         
-            conn = DriverManager.getConnection("jdbc:mysql://localhost/uc11?user=root&password=");
-            
-        } catch (SQLException erro){
-            JOptionPane.showMessageDialog(null, "Erro ConectaDAO" + erro.getMessage());
-        }
-        return conn;
+        String url = "jdbc:mysql://127.0.0.1:3306/leiloes?useSSL=false&serverTimezone=UTC";
+        String user = "root";
+        String password = "Digitals0741#"; 
+        conn = DriverManager.getConnection(url, user, password);
+        
+    } catch (ClassNotFoundException e) {
+        JOptionPane.showMessageDialog(null, "Erro: Driver JDBC não encontrado!");
+    } catch (SQLException erro){
+        JOptionPane.showMessageDialog(null, "Erro de Conexão: " + erro.getMessage());
     }
-    
+    return conn;
 }
+    }

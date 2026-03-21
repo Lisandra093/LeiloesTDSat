@@ -1,3 +1,6 @@
+
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -149,7 +152,24 @@ public class cadastroVIEW extends javax.swing.JFrame {
         produto.setStatus(status);
         
         ProdutosDAO produtodao = new ProdutosDAO();
-        produtodao.cadastrarProduto(produto);
+        boolean salvar = produtodao.cadastrarProduto(produto);
+        
+        if(salvar) {
+            javax.swing.JOptionPane.showMessageDialog(null, 
+            "Produto cadastrado com sucesso!");
+            
+            cadastroNome.setText("");
+            cadastroValor.setText("");
+            
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(null, 
+            "Erro ao cadastrar produto!");
+        
+            
+            
+            
+        }
+        
         
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
