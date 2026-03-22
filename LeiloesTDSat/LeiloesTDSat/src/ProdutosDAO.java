@@ -47,7 +47,7 @@ public class ProdutosDAO {
         
         
     
-    
+    //Commit #5: Implementação da listagem na tabela
     public ArrayList<ProdutosDTO> listarProdutos(){
         conn = new conectaDAO().connectDB();
         String sql = "SELECT * FROM Produtos";
