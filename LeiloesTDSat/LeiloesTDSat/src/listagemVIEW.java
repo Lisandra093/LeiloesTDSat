@@ -159,6 +159,7 @@ public class listagemVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVenderActionPerformed
 
     private void btnVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendasActionPerformed
+        // Método para listar apenas os vendidos
         VendasView telaVendas = new VendasView(); 
         
         telaVendas.setVisible(true);
