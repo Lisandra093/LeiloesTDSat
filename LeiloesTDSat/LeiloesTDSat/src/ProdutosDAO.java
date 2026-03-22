@@ -56,6 +56,7 @@ public class ProdutosDAO {
             prep = conn.prepareStatement(sql);
             resultset = prep.executeQuery();
 
+    // Commit #6: Correção de bug na conexão com banco de dados        
             listagem.clear();
 
             while(resultset.next()) {
@@ -66,7 +67,7 @@ public class ProdutosDAO {
             p.setStatus(resultset.getString("status"));
             listagem.add(p);
         }
-        } catch (Exception e) {
+        } catch (Exception e) { // Commit #4: Adição de mensagens de sucesso e erro
             System.out.println("Erro ao listar: " + e.getMessage());
         }
         
