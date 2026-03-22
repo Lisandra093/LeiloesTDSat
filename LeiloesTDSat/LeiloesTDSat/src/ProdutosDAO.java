@@ -42,10 +42,28 @@ public class ProdutosDAO {
             } finally {
     try { if (conn != null) conn.close(); } catch (Exception e) {}
     }
+
+ }
+    
+    public void venderProduto(int id) {
+        
+    conn = new conectaDAO().connectDB();
+    String sql = "UPDATE produtos SET status = 'vendido' WHERE id = ?";
+    
+    try {
+            prep = conn.prepareStatement(sql);
+            prep.setInt(1, id);
+            prep.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Produto vendido com sucesso!");
+    } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao vender produto: " + e.getMessage());   
+            
+            } finally {
+    try { if (conn != null) conn.close(); } catch (Exception e) {}
+    }
            
         }
-        
-        
+     
     
     //Commit #5: Implementação da listagem na tabela
     public ArrayList<ProdutosDTO> listarProdutos(){
@@ -75,6 +93,37 @@ public class ProdutosDAO {
     
 
     }
+    
+    public ArrayList<ProdutosDTO> listarProdutosVendidos(){
+        conn = new conectaDAO().connectDB();
+        String sql = "SELECT * FROM produtos WHERE status = 'Vendido'";
+        listagem.clear();
+
+    try {
+            prep = conn.prepareStatement(sql);
+            resultset = prep.executeQuery();
+
+    // Commit #6: Correção de bug na conexão com banco de dados        
+            listagem.clear();
+
+            while(resultset.next()) {
+            ProdutosDTO p = new ProdutosDTO();    
+            p.setId(resultset.getInt("id"));
+            p.setNome(resultset.getString("nome"));
+            p.setValor(resultset.getInt("valor"));
+            p.setStatus(resultset.getString("status"));
+            listagem.add(p);
+        }
+        } catch (Exception e) { // Commit #4: Adição de mensagens de sucesso e erro
+            System.out.println("Erro ao listar vendidos: " + e.getMessage());
+        }
+        
+        return listagem;
+    
+
+    }
+    
+    
     
     
         
