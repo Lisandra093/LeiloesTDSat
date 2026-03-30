@@ -117,8 +117,7 @@ public class ProdutosDAO {
         } catch (Exception e) { // Commit #4: Adição de mensagens de sucesso e erro
             System.out.println("Erro ao listar vendidos: " + e.getMessage());
         }
-        
-        return listagem;
+         return listagem;
     
 
     }

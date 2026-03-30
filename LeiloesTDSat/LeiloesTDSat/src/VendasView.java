@@ -113,7 +113,7 @@ public class VendasView extends javax.swing.JFrame {
        
         
 }
-     public void listarVendidos() {
+     public void listarVendidos() { //Elementos fundamentais na criação da tela de vendas 
     try {
         ProdutosDAO produtosdao = new ProdutosDAO();
         
@@ -127,7 +127,7 @@ public class VendasView extends javax.swing.JFrame {
                 listagem.get(i).getId(),
                 listagem.get(i).getNome(),
                 listagem.get(i).getValor(),
-                listagem.get(i).getStatus()
+                listagem.get(i).getStatus() //Atualização do status das vendas
             });
         }
     } catch (Exception e) {
